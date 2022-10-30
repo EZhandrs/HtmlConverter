@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <form action="/home/upload" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <div class="text-left form-line">
+            <input type="file" name="formFile" accept=".html" />
+        </div>
+        <hr />
+        <div id="progress" class="form-line text-left"></div>
+        <hr />
+        <div class="form-line">
+            <button type="submit" class="button">Convert</button>
+        </div>
+    </form>
+</div>

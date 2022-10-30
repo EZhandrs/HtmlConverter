@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "ConverterService";
+
+import "google/protobuf/empty.proto";
+
+package convert;
+
+service GrpcHtmlConversion {
+  rpc ConvertHtml (stream  HtmlConvertRequest) returns (HtmlConvertReply);
+}
+
+service GrpcHtmlConverted {
+  rpc ConvertedHtml (HtmlConvertedRequest) returns (google.protobuf.Empty);
+}
+
+message HtmlConvertRequest {
+  oneof request {
+    bytes bytes = 1;
+  }
+}
+
+message HtmlConvertReply {
+	string guid = 1;
+}
+
+message HtmlConvertedRequest {
+	string guid = 1;
+	bytes bytes = 2;
+}
